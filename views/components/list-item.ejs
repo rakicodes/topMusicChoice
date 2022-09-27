@@ -1,0 +1,32 @@
+
+<li class="list-group-item d-flex gap-5 justify-content-between">
+    <span class="w-50"><%= elem.name %></span>
+    <% if (user && elem.likes.includes(user.id)) { %>
+        <form
+        class=""
+        action="/<%= type %>/unlike/<%= elem._id %>?_method=PUT"
+        method="POST"
+        >
+                <button class="btn fa fa-heart liked" type="submit"></button>
+        </form> 
+
+    <% } else if (user && !elem.likes.includes(user.id)) { %>
+        <form
+        class=""
+        action="/<%= type %>/like/<%= elem._id %>?_method=PUT"
+        method="POST"
+        >
+            <button class="btn fa fa-heart" type="submit"></button>
+        </form> 
+    <% } %>           
+    <span class=""><%= elem.likesCount %></span>
+    <%if(user && elem.createdBy == user.id){ %>
+        <form
+        action="/<%= type %>/delete/<%= elem._id %>?_method=DELETE"
+        method="POST"
+        class=""
+        >
+            <button class="btn fa fa-x" type="submit"></button>
+        </form>
+    <%}%>
+</li>

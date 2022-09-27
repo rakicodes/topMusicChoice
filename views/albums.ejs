@@ -1,0 +1,18 @@
+<%- include('partials/header', { user: user }) -%>
+
+<div class="container">
+    <h1>Albums</h1>
+    <div class="row mb-2">
+        <ul class="list-group col-md-6">
+            <% album.forEach( elem => { %>
+                <%- include('components/list-item', {elem: elem, type: 'albums'}); %>
+            <% }) %>
+        </ul>
+        
+        <% if (user) { %>
+            <%- include('components/form', {type: 'album'}); %>
+        <% } %>        
+    </div>
+</div>
+
+<%- include('partials/footer') -%>
